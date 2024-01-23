@@ -1,10 +1,10 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from text import photos
-from aiogram.filters import CommandStart, Command
+from photo_and_cap import photos
+from aiogram.filters import Command
 from config import bot, dp
 from aiogram import types
 from aiogram.types import  CallbackQuery
-from aiogram.filters import  Command, command
+from aiogram.filters import  Command
 from aiogram.enums import ParseMode 
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.filters.callback_data import CallbackData
@@ -32,8 +32,8 @@ async def my_callback_foo(query: CallbackQuery):
     elif query.data == "back":
         index -= 1
     if index < 0:
-        index = 1
-    elif index > 1:
+        index = 5
+    elif index > 5:
         index = 0
     await query.message.edit_media(
         media=types.InputMediaPhoto(
