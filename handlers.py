@@ -3,7 +3,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters import CommandStart, Command
 from aiogram.utils.markdown import hbold
 from config import dp, bot
-from text import text_A1,text_C2,text_A2,text_B1,text_B2,text_C1
+from keyboard import photos, index, builder
 
 
 
@@ -23,46 +23,13 @@ async def help_handle(message: types.Message):
     await message.answer(text=help_text2)
 
 
+@dp.message(Command('film'))
+async def film_command(message: types.Message):
+    await bot.send_photo(chat_id=message.from_user.id,
+                         photo=photos[index]['url'],
+                         caption=photos[index]['cap'],
+                         reply_markup=builder.as_markup())
 
-@dp.message(Command('film_a1'))
-async def command_english_film_A1(message: types.Message):
-    await message.answer_photo(photo='https://cutt.ly/QwHPmqXq', 
-                               caption=text_A1)
-
-
-
-@dp.message(Command('film_a2'))
-async def command_english_film_A2(message: types.Message):
-    await message.answer_photo(photo='https://cutt.ly/YwHPWVHB', 
-                               caption=text_A2)
-    
-
-
-@dp.message(Command('film_b1'))
-async def command_english_film_B1(message: types.Message):
-    await message.answer_photo(photo='https://inlnk.ru/70LBal', 
-                               caption=text_B1)
-    
-
-
-@dp.message(Command('film_b2'))
-async def command_english_film_B2(message: types.Message):
-    await message.answer_photo(photo='https://2.bp.blogspot.com/-jUMnJY50Qs8/TXDiDhZN2HI/AAAAAAAACl0/H_aE0VKZaas/s1600/TkeKingsSpeech.jpg', 
-                               caption=text_B2)
-    
-
-
-@dp.message(Command('film_c1'))
-async def command_english_film_C1(message: types.Message):
-    await message.answer_photo(photo='https://th.bing.com/th/id/OIP.2Qb0MJ6WbeCAaWFPNNdf5QHaLH?w=1000&h=1500&rs=1&pid=ImgDetMain', 
-                               caption=text_C1)
-    
-
-
-@dp.message(Command('film_c2'))
-async def command_english_film_C2(message: types.Message):
-    await message.answer_photo(photo='https://inlnk.ru/20YjA9', 
-                               caption=text_C2)
 
 
 @dp.message()

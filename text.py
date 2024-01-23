@@ -19,3 +19,32 @@ text_C1 = hbold('Inglourious Basterds\n\nЭтот фильм полезен дл
 text_C2 = hbold('Venom 2\n\n Этот фильм содержит сложные диалоги и быстрый темп речи, что может помочь улучшить словарный запас и понимание языка.\n\nОн также использует специфическую лексику, связанную с научной фантастикой и боевиками.\n\nВизуальные эффекты и звуковое оформление фильма создают уникальную атмосферу, которая может помочь в понимании контекста и настроения диалогов.')
 
 
+
+
+
+photos = [
+    {
+        'url': 'https://cutt.ly/QwHPmqXq',
+        'cap': text_A1
+    },
+    {
+        'url': 'https://cutt.ly/YwHPWVHB',
+        'cap': text_A2
+    },
+    {
+        'url': 'https://inlnk.ru/70LBal',
+        'cap': text_B1
+    },
+    {
+        'url': 'https://2.bp.blogspot.com/-jUMnJY50Qs8/TXDiDhZN2HI/AAAAAAAACl0/H_aE0VKZaas/s1600/TkeKingsSpeech.jpg', 
+        'cap': text_B2
+    },
+    {
+        'url': 'https://th.bing.com/th/id/OIP.2Qb0MJ6WbeCAaWFPNNdf5QHaLH?w=1000&h=1500&rs=1&pid=ImgDetMain',
+        'cap': text_C1
+    },
+    {
+        'url': 'https://inlnk.ru/20YjA9',
+        'cap': text_C2
+    },
+]
