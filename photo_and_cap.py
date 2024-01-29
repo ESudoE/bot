@@ -86,4 +86,3 @@ photos_app = [
 
 
 
-ssilka = "Понравилось приложение нажми скачать ---> <a href='https://play.google.com/store/apps/details?id=com.duolingo&hl=ru'>Скачать</a>"
