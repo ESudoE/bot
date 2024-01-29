@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.filters import CommandStart, Command
 from aiogram.utils.markdown import hbold
 from config import dp, bot
-from keyboard import photos, index, builder
+from keyboard import photos, index, builder, photos_article, index_article, builder_article, index_app, photos_app, builder_app
 from photo_and_cap import time_table, cap_time_table
 
 
@@ -35,10 +35,19 @@ async def time_table_handle(message: types.Message):
     await bot.send_photo(chat_id=message.from_user.id,
                          photo=time_table,
                          caption=cap_time_table)
+    
 
-@dp.message()
-async def echo_handler(message: types.Message) -> None:
-    try:
-        await message.send_copy(chat_id=message.chat.id)
-    except TypeError:
-        await message.answer("Nice try!")
+@dp.message(Command('article'))
+async def article_handler(message: types.Message):
+    await bot.send_photo(chat_id=message.from_user.id,
+                         photo=photos_article[index_article]["url"],
+                         caption=photos_article[index_article]['cap'],
+                         reply_markup=builder_article.as_markup())
+    
+@dp.message(Command('apps'))
+async def app_handler(message: types.Message):
+    await bot.send_photo(
+                         chat_id=message.from_user.id,
+                         photo=photos_app[index_app]["url"],
+                         caption=photos_app[index_app]["cap"],
+                         reply_markup=builder_app.as_markup())
