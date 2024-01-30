@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.filters import CommandStart, Command
 from aiogram.utils.markdown import hbold
 from config import dp, bot
-from keyboard import photos, index, builder, photos_article, index_article, builder_article, index_app, photos_app, builder_app
+from keyboard import photos, index, builder, photos_article, index_article, builder_article, index_app, photos_app, builder_app, index_level,photo_level,builder_level
 from photo_and_cap import time_table, cap_time_table
 
 
@@ -10,12 +10,13 @@ from photo_and_cap import time_table, cap_time_table
 @dp.message(CommandStart())
 async def command_start_handler(message: types.Message):
     await message.answer(f"Hello, {hbold(message.from_user.full_name)}!")
+    await message.answer(f"для навигации введите или нажмите - /navigation")
 
 
 
-@dp.message(Command("help"))
-async def help_handle(message: types.Message):
-    help_text2 = hbold('вот комманды которые может обробатывать бот:\n\n/start ---> начало работы с ботом\n\n/help ---> возможности бота\n\n/film ---> фильмы от А1 до С2\n\n/time_table ---> таблица времён')
+@dp.message(Command("navigation"))
+async def navigation_handle(message: types.Message):
+    help_text2 = hbold('вот комманды которые может обробатывать бот:\n\n/start ---> начало работы с ботом\n\n/navigation ---> возможности бота\n\n/film ---> фильмы от А1 до С2\n\n/time_table ---> таблица времён\n\n/article ---> артикли в английском языке\n\n/apps ---> приложения для изучения английского языка\n\n/levels ---> база знаний для уровней английского языка')
     await message.answer(parse_mode='HTML',
                          text= f"Привет!{hbold(message.from_user.full_name)}\n <b>это обучающий бот Obuchalochka\n\nПодборка интересных фильмов на английском языке, в которых легко можно понять речь носителей тем самым обогащать свой словарный запас английского с фильмами\n\n</b> "                         
                          )
@@ -51,3 +52,12 @@ async def app_handler(message: types.Message):
                          photo=photos_app[index_app]["url"],
                          caption=photos_app[index_app]["cap"],
                          reply_markup=builder_app.as_markup())
+
+@dp.message(Command('levels'))
+async def app_handler(message: types.Message):
+    await bot.send_photo(
+                         chat_id=message.from_user.id,
+                         photo=photo_level[index_level]["url"],
+                         caption=photo_level[index_level]["cap"],
+                         reply_markup=builder_level.as_markup())
+

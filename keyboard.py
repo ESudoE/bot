@@ -1,5 +1,5 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from photo_and_cap import photos,photos_article, photos_app
+from photo_and_cap import photos,photos_article, photos_app,photo_level
 from aiogram.filters import Command
 from config import bot, dp
 from aiogram import types
@@ -79,4 +79,26 @@ async def my_callback_foo_app(query: CallbackQuery):
             caption=photos_app[index_app]['cap']
         ),
         reply_markup=builder_app.as_markup()
+    )
+
+
+builder_level = InlineKeyboardBuilder()
+builder_level.button(text="-->", callback_data="next_level")
+   
+
+index_level = 0 
+
+@dp.callback_query(F.data == 'next_level')
+async def my_callback_foo_level(query: CallbackQuery):
+    global index_level
+    if query.data == 'next_level':
+        index_level += 1
+    if index_level > 4:
+        index_level = 0
+    await query.message.edit_media(
+        media=types.InputMediaPhoto(
+            media=photo_level[index_level]['url'],
+            caption=photo_level[index_level]['cap']
+        ),
+        reply_markup=builder_level.as_markup()
     )
