@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.filters import CommandStart, Command
 from aiogram.utils.markdown import hbold
 from config import dp, bot
-from keyboard import photos, index, builder, photos_article, index_article, builder_article, index_app, photos_app, builder_app, index_level,photo_level,builder_level,photo_method,index_method,builder_method
+from keyboard import photos, index, builder, photos_article, index_article, builder_article, index_app, photos_app, builder_app, index_level,photo_level,builder_level,photo_advice,index_advice,builder_advice
 from photo_and_cap import time_table, cap_time_table
 
 
@@ -63,10 +63,10 @@ async def app_handler(message: types.Message):
                          reply_markup=builder_level.as_markup())
 
 
-@dp.message(Command('method'))
+@dp.message(Command('advice'))
 async def app_handler(message: types.Message):
     await bot.send_photo(
                          chat_id=message.from_user.id,
-                         photo=photo_method[index_method]["url"],
-                         caption=photo_method[index_method]["cap"],
-                         reply_markup=builder_method.as_markup())
+                         photo=photo_advice[index_advice]["url"],
+                         caption=photo_advice[index_advice]["cap"],
+                         reply_markup=builder_advice.as_markup())
