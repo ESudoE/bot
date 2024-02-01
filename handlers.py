@@ -64,7 +64,7 @@ async def app_handler(message: types.Message):
 
 
 @dp.message(Command('advice'))
-async def app_handler(message: types.Message):
+async def advice_handler(message: types.Message):
     await bot.send_photo(
                          chat_id=message.from_user.id,
                          photo=photo_advice[index_advice]["url"],
