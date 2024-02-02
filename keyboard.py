@@ -1,5 +1,5 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from photo_and_cap import photos,photos_article, photos_app,photo_level,photo_advice
+from photo_and_cap import photos,photos_article, photos_app,photo_level,photo_advice,photo_blogers, photo_podcast
 from aiogram.filters import Command
 from config import bot, dp
 from aiogram import types
@@ -123,4 +123,46 @@ async def my_callback_foo_method(query: CallbackQuery):
             caption=photo_advice[index_advice]['cap']
         ),
         reply_markup=builder_advice.as_markup()
+    )
+
+
+builder_blogers = InlineKeyboardBuilder()
+builder_blogers.button(text="-->", callback_data="next_blogers")
+
+index_blogers= 0 
+
+@dp.callback_query(F.data == 'next_blogers')
+async def my_callback_foo_method(query: CallbackQuery):
+    global index_blogers
+    if query.data == 'next_blogers':
+        index_blogers += 1
+    if index_blogers > 4:
+        index_blogers = 0
+    await query.message.edit_media(
+        media=types.InputMediaPhoto(
+            media=photo_blogers[index_blogers]['url'],
+            caption=photo_blogers[index_blogers]['cap']
+        ),
+        reply_markup=builder_blogers.as_markup()
+    )
+
+
+builder_podcast = InlineKeyboardBuilder()
+builder_podcast.button(text="-->", callback_data="next_podcast")
+
+index_podcast= 0 
+
+@dp.callback_query(F.data == 'next_podcast')
+async def my_callback_foo_podcast(query: CallbackQuery):
+    global index_podcast
+    if query.data == 'next_podcast':
+        index_podcast += 1
+    if index_podcast > 4:
+        index_podcast = 0
+    await query.message.edit_media(
+        media=types.InputMediaPhoto(
+            media=photo_podcast[index_podcast]['url'],
+            caption=photo_podcast[index_podcast]['cap']
+        ),
+        reply_markup=builder_podcast.as_markup()
     )
