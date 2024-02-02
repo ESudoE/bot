@@ -132,7 +132,7 @@ builder_blogers.button(text="-->", callback_data="next_blogers")
 index_blogers= 0 
 
 @dp.callback_query(F.data == 'next_blogers')
-async def my_callback_foo_method(query: CallbackQuery):
+async def my_callback_foo_blogers(query: CallbackQuery):
     global index_blogers
     if query.data == 'next_blogers':
         index_blogers += 1
