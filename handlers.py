@@ -55,7 +55,7 @@ async def app_handler(message: types.Message):
 
 
 @dp.message(Command('levels'))
-async def app_handler(message: types.Message):
+async def levels_handler(message: types.Message):
     await bot.send_photo(
                          chat_id=message.from_user.id,
                          photo=photo_level[index_level]["url"],

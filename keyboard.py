@@ -136,7 +136,7 @@ async def my_callback_foo_blogers(query: CallbackQuery):
     global index_blogers
     if query.data == 'next_blogers':
         index_blogers += 1
-    if index_blogers > 4:
+    if index_blogers > 2:
         index_blogers = 0
     await query.message.edit_media(
         media=types.InputMediaPhoto(
@@ -157,7 +157,7 @@ async def my_callback_foo_podcast(query: CallbackQuery):
     global index_podcast
     if query.data == 'next_podcast':
         index_podcast += 1
-    if index_podcast > 4:
+    if index_podcast > 2:
         index_podcast = 0
     await query.message.edit_media(
         media=types.InputMediaPhoto(
